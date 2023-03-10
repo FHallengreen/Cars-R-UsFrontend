@@ -19,4 +19,3 @@ jobs:
           server: cp06.nordicway.dk
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /cars.fhallengreen.com/
