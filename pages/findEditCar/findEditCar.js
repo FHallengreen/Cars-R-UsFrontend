@@ -3,7 +3,11 @@ import { API_URL} from "../../settings.js"
 const URL = `${API_URL}/cars`
 import { sanitizeStringWithTableRows } from "../../utils.js"
 
-export async function initFindEditCar(){
-    
-  
+export function initFindEditCar(){
+
+}
+
+export async function findCar(){
+
+
 }
