@@ -1,14 +1,19 @@
-on: push
-name: 🚀 Deploy website on push
-jobs:
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v3
+name: Deploy to FTP
 
-      - name: 📂 Sync files
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy code
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: cp06.nordicway.dk
