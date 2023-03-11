@@ -32,7 +32,7 @@
                 <label for="user-name">User name</label>
               </div>
               <div class="col-md-9">
-                <input id="user-name" placeholder="Enter your user name">
+                <input id="user-name" required placeholder="Enter your user name">
               </div>
             </div>
             <div class="row">
@@ -40,7 +40,7 @@
                 <label for="reservation-date">Date</label>
               </div>
               <div class="col-md-9">
-                <input id="reservation-date" type="date" placeholder="Select a reservation date">
+                <input id="reservation-date" type="date" required placeholder="Select a reservation date">
               </div>
             </div>
             <input hidden id="car-id" />
@@ -49,7 +49,7 @@
           <p id="status">&nbsp;</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="btn-close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="btn-reservation" type="button" class="btn btn-primary">Make Reservation</button>
         </div>
       </div>
