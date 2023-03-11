@@ -12,8 +12,14 @@
     </thead>
     <tbody id="table-rows"></tbody>
   </table>
-  <p id="error" style="margin-top:0.5 em;"></p>
 
+  <p id="error" style="margin-top:0.5 em;"></p>
+  <div id="loading" class="d-none text-center my-3">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div>Loading data from https://cars-r-us2.azurewebsites.net/, please wait...</div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="reservation-modal" tabindex="-1" aria-labelledby="reservation-modal-label"
     aria-hidden="true">
@@ -32,7 +38,7 @@
                 <label for="user-name">User name</label>
               </div>
               <div class="col-md-9">
-                <input id="user-name" placeholder="Enter your user name">
+                <input id="user-name" required placeholder="Enter your user name">
               </div>
             </div>
             <div class="row">
@@ -40,7 +46,7 @@
                 <label for="reservation-date">Date</label>
               </div>
               <div class="col-md-9">
-                <input id="reservation-date" type="date" placeholder="Select a reservation date">
+                <input id="reservation-date" type="date" required placeholder="Select a reservation date">
               </div>
             </div>
             <input hidden id="car-id" />
@@ -49,7 +55,7 @@
           <p id="status">&nbsp;</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="btn-close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button id="btn-reservation" type="button" class="btn btn-primary">Make Reservation</button>
         </div>
       </div>

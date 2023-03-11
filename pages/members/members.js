@@ -1,8 +1,10 @@
-import { API_URL } from "../../settings.js"
-const URL = API_URL + "/members"
+import { API_URL } from "../../settings.js";
+const URL = API_URL + "/members";
 import { sanitizeStringWithTableRows } from "../../utils.js";
 
-export async function initMembers(){
+export async function initMembers() {
+  document.getElementById("loading").classList.remove("d-none");
+  try {
     const members = await fetch(URL).then((res) => res.json());
     const tableRowsStr = members
       .map(
@@ -15,8 +17,13 @@ export async function initMembers(){
       </tr>`
       )
       .join("");
-  
+
     const okRows = sanitizeStringWithTableRows(tableRowsStr);
     document.getElementById("tbl-body").innerHTML = okRows;
-
+  } catch (error) {
+    alert(error);
+  } finally {
+    // hide the spinner
+    document.getElementById("loading").classList.add("d-none");
+  }
 }

@@ -23,6 +23,12 @@
     </table>
     <p id="error" style="color:red"></p>
   </div>
+  <div id="loading" class="d-none text-center my-3">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div>Loading data from https://cars-r-us2.azurewebsites.net/, please wait...</div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="member-details-modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
     <div class="modal-dialog">
@@ -97,6 +103,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
+        
       </div>
     </div>
   </div>
