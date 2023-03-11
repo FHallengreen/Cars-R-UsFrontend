@@ -104,7 +104,7 @@ export async function reserveCar() {
       },
       body: JSON.stringify(reservation),
     });
-    console.log("Reservation added successfully");
+    alert("Reservation added successfully");
   } catch (error) {
     console.error(error);
     alert("An error occurred while reserving car.");
