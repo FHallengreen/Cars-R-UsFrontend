@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Create .ftpignore file
+        run: echo '.mvn' > .ftpignore
+
       - name: Deploy code
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
@@ -20,3 +23,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /cars.fhallengreen.com/
+          args: --ignore .ftpignore
