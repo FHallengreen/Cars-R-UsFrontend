@@ -79,7 +79,6 @@ function showReservationModal(carDetails) {
   reservationModal.show();
   const reservationBtn = document.getElementById("btn-reservation");
   reservationBtn.onclick = async function () {
-    await reserveCar();
     reservationModal.hide();
   };
 }

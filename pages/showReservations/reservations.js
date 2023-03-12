@@ -9,6 +9,7 @@ export async function initListReservationsAll() {
       .map(
         (reservation) => `
           <tr>
+          <td>${reservation.reservationId}</td>
           <td>${reservation.carId}</td>
           <td>${reservation.brand}</td>
           <td>${reservation.model}</td>
