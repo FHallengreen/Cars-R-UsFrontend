@@ -1,0 +1,8 @@
+# ignore all files and folders inside the src folder
+/src/**
+
+# ignore specific files
+.vscode/**
+.idea/**
+*.log
+*.txt
