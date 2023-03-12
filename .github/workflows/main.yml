@@ -23,4 +23,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /cars.fhallengreen.com/
-          args: --ignore .ftpignore
+          exclude: .ftpignore
+          dangerous-clean-slate: true # Add this line
