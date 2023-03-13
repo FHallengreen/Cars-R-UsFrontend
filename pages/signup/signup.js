@@ -52,7 +52,12 @@ function addMember() {
       form.reset();
     })
     .catch((error) => {
-      status.innerText = error.message;
+      try {
+        const errorMessage = JSON.parse(error.message);
+        status.innerText = errorMessage.message;
+      } catch (e) {
+        status.innerText = error.message;
+      }
     })
     .finally(() => {
       btnSubmit.disabled = false;
