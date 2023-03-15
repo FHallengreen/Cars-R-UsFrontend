@@ -22,10 +22,9 @@ const login = localStorage.getItem("token")
 if ((login)) {
   document.getElementById("login-id").style.display = "none";
   document.getElementById("logout-id").style.display = "block";
-  updateRestrictedLinks(true);
+  updateRestrictedLinks();
 }
-
-
+updateRestrictedLinks()
 window.addEventListener("load", async () => {
   const templateCars = await loadHtml("./pages/cars/cars.html");
   const templateMembers = await loadHtml("./pages/members/members.html");
@@ -106,16 +105,15 @@ window.addEventListener("load", async () => {
     .resolve();
   router.hooks({
     after: (params) => {
-      updateRestrictedLinks(isLoggedIn());
+      updateRestrictedLinks();
     },
   });
   window.onload = function () {
     const token = localStorage.getItem("token");
     const roles = localStorage.getItem("roles");
-    const loggedIn = isLoggedIn();
-
+    
     if (token && roles) {
-      updateRestrictedLinks(loggedIn);
+      updateRestrictedLinks();
     }
   };
 });

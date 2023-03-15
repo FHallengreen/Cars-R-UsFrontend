@@ -5,7 +5,6 @@ import { checkIfLoggedIn } from "../../auth.js";
 
 export async function initMembers() {
   const token = localStorage.getItem("token");
-  const roles = localStorage.getItem("roles");
   try {
     checkIfLoggedIn();
   } catch (error) {
@@ -38,7 +37,7 @@ export async function initMembers() {
     const okRows = sanitizeStringWithTableRows(tableRowsStr);
     document.getElementById("tbl-body").innerHTML = okRows;
   } catch (error) {
-    alert(error);
+    console.log(error.message)
   } finally {
     // hide the spinner
     document.getElementById("loading").classList.add("d-none");
