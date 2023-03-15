@@ -4,6 +4,7 @@ import { sanitizeStringWithTableRows } from "../../utils.js";
 
 const URL = API_URL + "/cars";
 const reservationURL = API_URL + "/reservations";
+const token = localStorage.getItem("token");
 
 export async function initReservation() {
   getCars();
@@ -16,7 +17,14 @@ export async function initReservation() {
 export async function getCars() {
   document.getElementById("loading").classList.remove("d-none");
   try {
-    const cars = await fetch(URL).then((res) => res.json());
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const cars = await fetch(URL, options).then((res) => res.json());
     const tableRowsStr = cars
       .map(
         (car) => `
@@ -35,8 +43,7 @@ export async function getCars() {
     const okRows = sanitizeStringWithTableRows(tableRowsStr);
     document.getElementById("table-rows").innerHTML = okRows;
   } catch (error) {
-    console.error(error);
-    alert("An error occurred while fetching cars.");
+    console.log(error.message);
   } finally {
     // hide the spinner
     document.getElementById("loading").classList.add("d-none");
@@ -54,13 +61,20 @@ async function setupReservationModal(evt) {
 }
 
 async function getCarDetails(carId) {
+ 
   try {
-    const response = await fetch(`${URL}/${carId}`);
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    };
+    const response = await fetch(`${URL}/${carId}`, options);
     const carDetails = await response.json();
     return carDetails;
   } catch (error) {
-    console.error(error);
-    alert("An error occurred while fetching car details.");
+    console.log(error.message);
   }
 }
 
@@ -103,11 +117,11 @@ export async function reserveCar() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(reservation),
     });
   } catch (error) {
-    console.error(error);
     console.log("An error occurred while reserving car.");
   }
   console.log("Reservation added successfully");

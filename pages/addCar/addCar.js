@@ -3,6 +3,7 @@
 import { API_URL, FETCH_NO_API_ERROR } from "../../settings.js";
 //Add id to this URL to get a single user
 const URL = `${API_URL}/cars`;
+const token = localStorage.getItem("token");
 
 export async function initAddCar(match) {
   document.getElementById("btn-submit-car").onclick = addCar;
@@ -26,12 +27,13 @@ export async function addCar() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(car),
     });
-    alert("Car added successfully");
-
+    window.router.navigate("#/cars");
+    displayCarAddedMessage()
   } catch (error) {
-    alert(FETCH_NO_API_ERROR);
+    console.log(error.message);
   }
 }

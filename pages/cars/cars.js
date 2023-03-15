@@ -4,6 +4,7 @@ import { sanitizeStringWithTableRows } from "../../utils.js";
 import { checkIfLoggedIn } from "../../auth.js";
 
 export async function initCars() {
+  
   const token = localStorage.getItem("token");
   try {
     checkIfLoggedIn();

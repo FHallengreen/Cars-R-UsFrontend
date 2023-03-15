@@ -10,6 +10,8 @@ export function initFindEditCar() {
   document.getElementById("btn-delete-car").onclick = deleteCar;
 }
 
+const token = localStorage.getItem("token");
+
 export async function fetchCar() {
   const id = document.getElementById("car-id-input").value;
 
@@ -17,8 +19,14 @@ export async function fetchCar() {
     if (id === "") {
       throw new Error("Please enter a car id");
     }
-
-    const car = await fetch(`${URL}/${id}`).then((res) => res.json());
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const car = await fetch(`${URL}/${id}`, options).then((res) => res.json());
 
     if (car.car_id === undefined) {
       throw new Error(`No car found with ID ${id}`);
@@ -30,14 +38,14 @@ export async function fetchCar() {
     document.getElementById("price-pr-day").value = car.pricePrDay;
     document.getElementById("best-discount").value = car.bestDiscount;
   } catch (error) {
-    alert(error);
+    console.log(error.message);
   }
   document.getElementById("car-id-input").value = "";
 }
 
 export async function editCar() {
   if (document.getElementById("car-id").value === "") {
-    alert("Please enter a car id");
+    console.log(error.message);
     return;
   }
 
@@ -60,6 +68,7 @@ export async function editCar() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify(car),
     })
@@ -74,7 +83,7 @@ export async function editCar() {
         document.getElementById("best-discount").value = "";
       });
   } catch (error) {
-    alert(error);
+    console.log(error.message);
   }
 }
 
@@ -87,10 +96,12 @@ export async function deleteCar() {
   const car_id = document.getElementById("car-id").value;
 
   try {
+    
     const response = await fetch(URL + "/" + car_id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -106,6 +117,6 @@ export async function deleteCar() {
       throw new Error(`Failed to delete car with ID ${car_id}`);
     }
   } catch (error) {
-    alert(error);
+    console.log(error.message);
   }
 }

@@ -6,30 +6,21 @@ export function checkIfLoggedIn() {
   const token = localStorage.getItem("token");
   const roles = localStorage.getItem("roles");
 
-  console.log("roles:", roles);
-
   if (token && roles) {
     const parsedRoles = JSON.parse(roles);
-
-    console.log("parsedRoles:", parsedRoles);
 
     const isAdmin = parsedRoles.includes("ADMIN");
     const isUser = parsedRoles.includes("USER");
 
-    console.log("isAdmin:", isAdmin);
-    console.log("isUser:", isUser);
 
     document.getElementById("login-id").style.display = "none";
     document.getElementById("logout-id").style.display = "block";
 
     if (isAdmin) {
-      console.log("User is admin");
       return { token, role: "ADMIN" };
     } else if (isUser) {
-      console.log("User is user");
       return { token, role: "USER" };
     } else {
-      console.log("User is anonymous");
       return { token, role: "anonymous" };
     }
   }

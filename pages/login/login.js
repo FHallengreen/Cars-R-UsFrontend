@@ -11,6 +11,7 @@ export function initLogin() {
 const url = API_URL + "/auth/login";
 
 async function login(evt) {
+  document.getElementById("loading").classList.remove("d-none");
   document.getElementById("error").innerText = "";
 
   const username = document.getElementById("username").value;
@@ -42,6 +43,10 @@ async function login(evt) {
 
   } catch (err) {
     console.log(err.message)
+  }
+  finally {
+    // hide the spinner
+    document.getElementById("loading").classList.add("d-none");
   }
 }
 

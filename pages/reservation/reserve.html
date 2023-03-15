@@ -17,7 +17,7 @@
     <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
-    <div>Loading data from https://cars-r-us2.azurewebsites.net/, please wait...</div>
+    <div>Loading data, please wait...</div>
   </div>
   <p id="error" style="margin-top:0.5 em;"></p>
   <br>
@@ -32,14 +32,12 @@
         </div>
         <div class="modal-body">
           <div>
-            <p style="font-style: italic;">With security enabled, and if this requires a user to be logged in,
-              username is not nessecary, since the server will know who the currently logged in user is </p>
             <div class="row">
               <div class="col-md-3">
                 <label for="user-name">User name</label>
               </div>
               <div class="col-md-9">
-                <input id="user-name" required placeholder="Enter your user name">
+                <input id="user-name" required placeholder="Enter your user name" readonly>
               </div>
             </div>
             <div class="row">

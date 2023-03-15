@@ -4,6 +4,7 @@ import { sanitizeStringWithTableRows } from "../../utils.js";
 const URL = API_URL + "/reservations/user/";
 
 export async function initListReservationsAll() {
+  document.getElementById("loading").classList.remove("d-none");
   try {
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ export async function initListReservationsAll() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     }
     const response = await fetch(URL + username, options);
@@ -37,5 +38,9 @@ export async function initListReservationsAll() {
     document.getElementById("tablerows").innerHTML = okRows;
   } catch (error) {
     console.log(error.message);
+  }
+  finally {
+    // hide the spinner
+    document.getElementById("loading").classList.add("d-none");
   }
 }
