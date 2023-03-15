@@ -4,7 +4,6 @@ import { sanitizeStringWithTableRows } from "../../utils.js";
 
 const URL = API_URL + "/cars";
 const reservationURL = API_URL + "/reservations";
-const token = localStorage.getItem("token");
 
 export async function initReservation() {
   getCars();
@@ -16,6 +15,7 @@ export async function initReservation() {
 
 export async function getCars() {
   document.getElementById("loading").classList.remove("d-none");
+  const token = localStorage.getItem("token");
   try {
     const options = {
       method: "GET",
@@ -61,7 +61,7 @@ async function setupReservationModal(evt) {
 }
 
 async function getCarDetails(carId) {
- 
+  const token = localStorage.getItem("token");
   try {
     const options = {
       method: "GET",
@@ -104,7 +104,8 @@ export async function reserveCar() {
   const carId = document.getElementById("car-id").value;
   const reservationDate = document.getElementById("reservation-date").value;
   const memberId = document.getElementById("user-name").value;
-
+  const token = localStorage.getItem("token");
+  
   const reservation = {
     memberId: memberId,
     carId: carId,

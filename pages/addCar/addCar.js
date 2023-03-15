@@ -3,7 +3,6 @@
 import { API_URL, FETCH_NO_API_ERROR } from "../../settings.js";
 //Add id to this URL to get a single user
 const URL = `${API_URL}/cars`;
-const token = localStorage.getItem("token");
 
 export async function initAddCar(match) {
   document.getElementById("btn-submit-car").onclick = addCar;
@@ -14,7 +13,7 @@ export async function addCar() {
   const model = document.getElementById("model").value;
   const pricePrDay = document.getElementById("price-pr-day").value;
   const bestDiscount = document.getElementById("best-discount").value;
-
+   const token = localStorage.getItem("token");
   const car = {
     brand: brand,
     model: model,

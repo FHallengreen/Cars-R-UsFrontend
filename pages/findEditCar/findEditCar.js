@@ -10,9 +10,8 @@ export function initFindEditCar() {
   document.getElementById("btn-delete-car").onclick = deleteCar;
 }
 
-const token = localStorage.getItem("token");
-
 export async function fetchCar() {
+  const token = localStorage.getItem("token");
   const id = document.getElementById("car-id-input").value;
 
   try {
@@ -44,6 +43,7 @@ export async function fetchCar() {
 }
 
 export async function editCar() {
+  const token = localStorage.getItem("token");
   if (document.getElementById("car-id").value === "") {
     console.log(error.message);
     return;
@@ -68,7 +68,7 @@ export async function editCar() {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(car),
     })
@@ -88,6 +88,7 @@ export async function editCar() {
 }
 
 export async function deleteCar() {
+  const token = localStorage.getItem("token");
   if (document.getElementById("car-id").value === "") {
     alert("Please enter a car id");
     return;
@@ -96,12 +97,11 @@ export async function deleteCar() {
   const car_id = document.getElementById("car-id").value;
 
   try {
-    
     const response = await fetch(URL + "/" + car_id, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
