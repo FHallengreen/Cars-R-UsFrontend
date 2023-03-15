@@ -107,7 +107,6 @@ export async function deleteCar() {
 
     if (response.ok) {
       console.log("Car deleted: ", car_id);
-      alert("Car deleted");
       document.getElementById("car-id").value = "";
       document.getElementById("brand").value = "";
       document.getElementById("model").value = "";
