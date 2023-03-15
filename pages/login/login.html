@@ -20,7 +20,7 @@
         </div>
         <div class="row" style="margin-top: 2em;">
           <div class="col-md-2">
-            <label for="username"><b>Username</b></label>
+            <label for="username" id="usernameLabel"><b>Username</b></label>
           </div>
           <div class="col-md-8">
             <input type="text" placeholder="Enter Username" id="username" required>
@@ -28,7 +28,7 @@
         </div>
         <div class="row">
           <div class="col-md-2">
-            <label for="password"><b>Password</b></label>
+            <label for="password" id="pwdLabel"><b>Password</b></label>
           </div>
           <div class="col-md-8">
             <input type="password" placeholder="Enter Password" id="password" required>
@@ -36,8 +36,7 @@
         </div>
         <div class="row" style="margin-top:2em">
           <div class="col-md-3 d-flex align-items-center">
-            <button style="width:100%" class="btn btn-dark car-zero-margin"
-              onClick="alert('Implement when you are ready for security')">Login</button>
+            <button style="width:100%" class="btn btn-dark car-zero-margin" id="loginBtn">Login</button>
           </div>
           <div class="col-md-4 d-flex align-items-center">
             <span class="car-zero-margin">Not yet a member
@@ -49,5 +48,6 @@
               password
             </button>
           </div>
+          <p id="error" style="color:red"></p>
         </div>
       </div>

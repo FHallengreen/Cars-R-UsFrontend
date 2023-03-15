@@ -68,10 +68,13 @@ function showReservationModal(carDetails) {
   const modalTitle = document.getElementById("reservation-modal-label");
   const carIdInput = document.getElementById("car-id");
   const reservationDateInput = document.getElementById("reservation-date");
+  const usernameInput = document.getElementById("user-name");
+  const username = localStorage.getItem("username");
 
   modalTitle.innerText = `Reserve ${carDetails.brand} ${carDetails.model}`;
   carIdInput.value = carDetails.car_id;
   reservationDateInput.value = "";
+  usernameInput.value = username;
 
   const reservationModal = new bootstrap.Modal(
     document.getElementById("reservation-modal")
@@ -103,9 +106,9 @@ export async function reserveCar() {
       },
       body: JSON.stringify(reservation),
     });
-    alert("Reservation added successfully");
   } catch (error) {
     console.error(error);
-    alert("An error occurred while reserving car.");
+    console.log("An error occurred while reserving car.");
   }
+  console.log("Reservation added successfully");
 }
